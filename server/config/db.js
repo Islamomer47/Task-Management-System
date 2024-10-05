@@ -1,14 +1,8 @@
 require("dotenv").config();
 const { Pool } = require("pg");
 
-// Function to encode the password
-const encodePassword = (password) => {
-  return encodeURIComponent(password);
-};
-
-const connectionString = `postgresql://${process.env.DB_USER}:${encodePassword(
-  process.env.DB_PASSWORD
-)}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`;
+// Use the POST_URL directly from the environment variable
+const connectionString = process.env.POST_URL;
 
 const pool = new Pool({
   connectionString: connectionString,
